@@ -1,0 +1,4 @@
+node_modules
+.env
+cookieSessions
+.wwebjs_cache
