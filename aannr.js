@@ -47,10 +47,6 @@ client.on('auth_failure', (msg) => {
 });
 
 client.on('ready', async () => {
-
-    const testes = await client.getChats()
-    console.log(testes)
-
     const finishTimeBooting = Date.now();
     const elapsedTimeSeconds = (finishTimeBooting - startTimeBooting) / 1000;
     spinnies.succeed('Loading', { text: 'Report Nota Manual BOT online and ready to use!', succeedColor: 'greenBright' });
@@ -67,11 +63,8 @@ client.on('ready', async () => {
         cron.schedule('* * * * *', async () => {
             const chat = await client.getChatById(process.env.WHATSAPP_GROUP_ID); //DEBUG GORUPID = "120363188986406978@g.us"
             const now = DateTime.local().setZone('Asia/Jakarta');
-            console.log(now)
             const isClosedTime = now.hour === 8 && now.minute === 0;
             const isOpenedTime = now.hour === 0 && now.minute === 0;
-            console.log(isClosedTime)
-            console.log(isOpenedTime)
 
             if (isClosedTime) {
                 sendTelegramLog("Group di tutup")
